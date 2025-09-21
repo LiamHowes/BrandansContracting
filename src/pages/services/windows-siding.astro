@@ -35,8 +35,8 @@ const preselected_services = ["windows-siding"];
 				<div class="grid md:grid-cols-2 gap-16">
 					<TransCard before_img={poolShedBefore} after_img={poolShedAfter} loading="eager"/>
 					<TransCard before_img={shedBefore} after_img={shedAfter} loading="eager" />
-					<Image src={kitchenWindow} alt="kitchen window" loading="eager" class="object-cover max-h-200 w-full"/>
-					<Image src={kitchenWindow2} alt="kitchen window" loading="eager" class="object-cover max-h-200 w-full"/>
+					<Image src={kitchenWindow} alt="kitchen window" loading="eager" layout='constrained' width={kitchenWindow.width} height={kitchenWindow.width} class="object-cover max-h-200 w-full"/>
+					<Image src={kitchenWindow2} alt="kitchen window" loading="eager" layout='constrained' width={kitchenWindow2.width} height={kitchenWindow2.width} class="object-cover max-h-200 w-full"/>
 				</div>
 			</div>
 		</section>

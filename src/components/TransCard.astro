@@ -18,10 +18,10 @@ const { before_img, before_alt = "before", after_img, after_alt="after", loading
 <div class="grid md:grid-cols-2 border-1 border-charcoal">
     <div class="overflow-hidden border-b-1 md:border-b-0 md:border-r-1 border-charcoal">
         <p class="text-center px-4 py-2 uppercase">Before</p>
-        <Image src={before_img} alt={before_alt} loading={loading} class="object-cover h-full max-h-100 w-full object-center"/>
+        <Image src={before_img} alt={before_alt} loading={loading} layout='constrained' width={before_img.width} height={before_img.width} class="object-cover h-full max-h-100 w-full object-center"/>
     </div>
     <div class="overflow-hidden">
         <p class="text-center px-4 py-2 uppercase">After</p>
-        <Image src={after_img} alt={after_alt} loading={loading} class="object-cover h-full max-h-100 w-full object-center"/>
+        <Image src={after_img} alt={after_alt} loading={loading} layout='constrained' width={after_img.width} height={after_img.width} class="object-cover h-full max-h-100 w-full object-center"/>
     </div>
 </div>

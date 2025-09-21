@@ -6,7 +6,7 @@ interface Props {
 const { selected_services = [] } = Astro.props;
 ---
 
-<form class="grid sm:grid-cols-2 gap-4 m-auto max-w-2xl" data-netlify="true" netlify-honeypot="fake-field" name="feedback" method="POST" action="/request-quote/success">
+<form class="grid sm:grid-cols-2 gap-4 m-auto max-w-2xl" data-netlify="true" netlify-honeypot="fake-field" id="request-quote-form" name="request-quote-form" method="POST" action="/request-quote/success">
     <div class="hidden">
         <input id="fake-field" name="fake-field" type="text"/>
         <label for="fake-field">Don't fill this field if you're a human. :)</label>
@@ -22,12 +22,12 @@ const { selected_services = [] } = Astro.props;
     </div>
 
     <div class="relative mt-6">
-        <input type="tel" required id="phone" name="phone" placeholder=" " class="bg-white border-1 border-charcoal p-2 w-full" />
+        <input type="tel" required autocomplete="tel" id="phone" name="phone" placeholder=" " class="bg-white border-1 border-charcoal p-2 w-full" />
         <label for="phone" class="absolute top-2 left-0 hover-label px-2 font-medium">Phone</label>
     </div>
 
     <div class="relative mt-6">
-        <input type="email" id="email" name="email" placeholder=" " class="bg-white border-1 border-charcoal p-2 w-full" />
+        <input type="email" autocomplete="email" id="email" name="email" placeholder=" " class="bg-white border-1 border-charcoal p-2 w-full" />
         <label for="email" class="absolute top-2 left-0 hover-label px-2 font-medium">Email</label>	
     </div>
     <fieldset class="sm:col-span-2">
@@ -110,3 +110,11 @@ const { selected_services = [] } = Astro.props;
 
     <input type="submit" value="Send Quote Request" class="btn-primary sm:col-span-2">
 </form>
+<div id="form-thankyou" class="hidden">
+    <h2>Thank you for your message!</h2>
+    <p>I'll get back to you as soon as possible to schedule an estimate.</p>
+</div>
+<script>
+    import handleSubmit from "../scripts/formSubmit.js";
+    handleSubmit();
+</script>
