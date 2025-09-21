@@ -51,13 +51,9 @@ input:required + label::after, .required::after{
     color:red;
     margin-left:0.125em;
 }
-input[type="submit"], button, .btn-primary{
-    /* border:2px solid transparent; */
-}
 input[type="submit"]:hover, button:hover, .btn-primary:hover{
     opacity:0.8;
     cursor:pointer;
-    /* border:2px solid var(--charcoal); */
 }
 label.hover-label{
     pointer-events:none;
