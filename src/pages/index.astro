@@ -1,11 +1,134 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import ServiceCard from '../components/ServiceCard.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+import TransCard from '../components/TransCard.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { Image } from 'astro:assets';
+import aboutHeadshotImage from '../assets/images/Brandan/headshot.jpeg';
+import aboutFamilyImage from '../assets/images/Brandan/family-christmas.jpeg';
+import drywallTrimImage from '../assets/images/stock/drywall-2.jpg';
+import paintingImage from '../assets/images/stock/paint-supplies-1.jpg';
+import flooringTileImage from '../assets/images/stock/tiles.jpg';
+import windowsSidingImage from '../assets/images/stock/windows.jpg';
+import carpentryImage from '../assets/images/stock/carpentry-1.jpg';
+import generalRepairsImage from '../assets/images/stock/tools.jpg';
+
+/* Before and After Images */
+import fancyDeckBefore from '../assets/images/BIg Fancy Deck/Before/large-deck-before.jpeg';
+import fancyDeckAfter from '../assets/images/BIg Fancy Deck/After/large-deck-after.jpeg';
+
+import flooringBefore from '../assets/images/Flooring/Before/flooring.jpeg';
+import flooringAfter from '../assets/images/Flooring/After/flooring.jpeg';
+
+import shedBefore from '../assets/images/Pool Shed/Before/pool-shed-1.jpeg';
+import shedAfter from '../assets/images/Pool Shed/After/pool-shed-1.jpeg';
+
+import bathroomBefore from '../assets/images/Bathroom 2/Before/bathroom-1.jpeg';
+import bathroomAfter from '../assets/images/Bathroom 2/After/bathroom-1.jpeg';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
-
-<Layout>
-	<Welcome />
+<style>
+	#hero{
+		height:min(900px, 80vh);
+		background:url('/images/hamilton-map.webp');
+		background-repeat:no-repeat;
+		background-size:cover;
+		background-position: center;
+		position:relative;
+	}
+	#hero::after{
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-color: var(--charcoal);
+		opacity: 0.8;
+		mix-blend-mode: darken;
+	}
+</style>
+<Layout title="Brandan's Contracting">
+	<main slot="main">
+		<section id="hero" class="pb-12 relative">
+			<div id="hero-banner" class="w-full flex flex-col relative z-1 h-full justify-center">
+				<div id="hero-text" class="container px-4 mx-auto py-16 text-center">
+					<h1 class="chalk text-4xl lg:text-6xl uppercase font-bold">Brandan's Contracting</h1>
+					<span class="chalk text-3xl lg:text-4xl">Proudly serving the Hamilton region since 2021</span>
+					<br/>
+					<a href="#request-quote" class="btn-primary text-3xl inline-block mt-8">Request Quote</a>
+				</div> 
+			</div>
+		</section>
+		<section id="services" class="py-16 opacity-0" data-animate>
+			<div class="container px-4 mx-auto">
+				<h2 class="font-bold text-4xl uppercase mb-4">Core Services</h2>
+				<div class="w-full flex-wrap md:grid md:grid-cols-2 md:gap-[32px] lg:grid-cols-3 xl:grid-cols-6 mb-4">
+					<ServiceCard title="Drywall + Trim" img={drywallTrimImage} href="/services/drywall-trim" alt="drywall and trim"/>
+					<ServiceCard title="Painting" img={paintingImage} href="/services/painting" alt="painting"/>
+					<ServiceCard title="Flooring + Tile" img={flooringTileImage} href="/services/flooring-tile" alt="flooring and tile"/>
+					<ServiceCard title="Windows + Siding" img={windowsSidingImage} href="/services/windows-siding" alt="windows and siding"/>
+					<ServiceCard title="Carpentry" img={carpentryImage} href="/services/carpentry" alt="carpentry"/>
+					<ServiceCard title="General Repairs" img={generalRepairsImage} href="/services/general-repairs" alt="general repairs"/>
+				</div>
+				<div class="">
+					<p class="mb-4 max-w-4xl">Don't see what you're looking for? I'm able to complete a variety of additional work such as installing doors, shelving, and appliances, pressure washing, and more. Submit a general request form and I will promptly let you if I can complete the job, and my availability.</p>
+					<a href="#request-quote" class="btn-primary fs-32 inline-block text-center">Request Quote</a>
+				</div>
+			</div>
+		</section>
+		<section id="about" class="py-16 opacity-0" style="background-color:var(--grey-bg);" data-animate>
+			<div class="container mx-auto px-4 overflow-x-hidden">
+				<h2 class="font-bold text-4xl uppercase mb-4">About Me</h2>
+				<div class="grid grid-cols-1 lg:grid-cols-2 gap-[32px] lg:gap-[32px]">
+					<div class="order-2 lg:order-1">
+						<Image src={aboutHeadshotImage} alt="Brandan" height="400" class="m-auto mb-4 block lg:hidden border-10 border-white outline-1 outline-charcoal"/>
+						<p class="mb-4 max-w-4xl">
+							Hi, I'm Brandan, the owner and founder of Brandan's Contracting! I'm the one you'll talk to on the phone, the one who will provide your quote, and who will get the job done right. 
+							When you hire me you will receive my direct attention, my personal standards of quality, and my commitment to your satisfaction.
+						</p>
+						<Image src={aboutFamilyImage} alt="family christmas" width="400" class="m-auto mb-4 block lg:hidden border-10 left-50 border-white outline-1 outline-charcoal"/>
+						<p class="max-w-4xl">
+							I started this company because I believe that contract work should be built on trust and quality craftsmanship, by people who have a personal stake in the community. 
+							Hamilton is where I call home, and where I have chosen to raise my family. While big corporations might see a sales number, I see a neighbour. With me as your point of contact, and the one working on-site, you get decisions made quickly, and without layers of management. 
+							Your vision is understood and executed on time, and on budget, while minimizing disruptions to your daily life.
+						</p>
+					</div>
+					<div class="order-1 lg:order-2 relative hidden lg:block mt-28">
+						<Image src={aboutHeadshotImage} alt="Brandan" height="400" class="absolute z-1 -top-40 border-10 border-white outline-1 outline-charcoal"/>
+						<Image src={aboutFamilyImage} alt="family christmas" width="400" class="relative z-0 border-10 left-50 border-white outline-1 outline-charcoal"/>
+					</div>
+				</div>
+			</div>
+			<section id="testimonials" class="py-16 pt-0" style="background-color:var(--grey-bg);">
+				<div class="container mx-auto px-4">
+					<h3 class="font-bold text-3xl uppercase mb-4">What The Community Says</h3>
+					<div class="flex gap-16 py-4 overflow-x-scroll touch-action: touch-pan-x">
+						<TestimonialCard num_stars={5} quote="I highly recommend Brandan for hiring to do any construction related work. He was organized, communicated often, was always on time, and did excellent work. Definitely one of the best tradespeople I have ever hired." name="Dr. Andreas Kyprianou" date="2 Jul 2025"/>
+						<TestimonialCard num_stars={5} quote="Brandan helped us with a few home repairs — fixing our tilted deck, filling gaps in the cement slabs in our basement, and cutting into the drywall to install a new socket — and he did an excellent job on all fronts. He was professional, punctual, and completed everything on time. The quality of work was top-notch, and his rates were very reasonable. We're really happy with the results and would definitely recommend Brandan to anyone looking for a reliable and skilled handyman." name="Anonymous Homestars User" date="24 Jun 2025"/>
+						<TestimonialCard num_stars={5} quote="Brandan's work was prompt and exactly what we asked for. Very happy with the result. Thanks Brandan for a job well done!" name="Peter Allum" date="2 Jul 2025"/>
+					</div>
+					<p class="text-right text-sm mt-4"><a class="hover:underline" href="https://www.homestars.com/profile/3009199-brandan-s-contracting" target="_blank">Read more reviews on HomeStars.com</a></p>
+				</div>
+			</section>
+		</section>
+		<section id="previous-work" class="py-16 opacity-0" data-animate>
+			<div class="container mx-auto px-4">
+				<h2 class="font-bold text-4xl uppercase mb-4">Previous Work</h2>
+				<div class="grid md:grid-cols-2 gap-16">
+					<TransCard before_img={fancyDeckBefore} after_img={fancyDeckAfter} />
+					<TransCard before_img={flooringBefore} after_img={flooringAfter} />
+					<TransCard before_img={shedBefore} after_img={shedAfter} />
+					<TransCard before_img={bathroomBefore} after_img={bathroomAfter} />
+				</div>
+			</div>
+		</section>
+		<section id="request-quote" class="py-16 opacity-0" data-animate>
+			<div class="container mx-auto px-4 m-auto">
+					<h2 class="font-bold text-4xl uppercase mb-4 text-center">Request Quote</h2>
+					<p class="text-center mb-4">Fill out some basic information and I will contact you to schedule your free estimate!</p>
+					<QuoteForm />
+			</div>
+		</section>
+	</main>
 </Layout>

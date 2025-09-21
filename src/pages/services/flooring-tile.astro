@@ -1,0 +1,53 @@
+---
+import BreadcrumbPage from '@layouts/BreadcrumbPage.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import QuoteForm from '@components/QuoteForm.astro';
+import TransCard from '@components/TransCard.astro';
+
+/* Before and After Images */
+import flooringBefore from '@assets/images/Flooring/Before/flooring.jpeg';
+import flooringAfter from '@assets/images/Flooring/After/flooring.jpeg';
+
+import bathroomBefore from '@assets/images/Bathroom 2/Before/bathroom-1.jpeg';
+import bathroomAfter from '@assets/images/Bathroom 2/After/bathroom-1.jpeg';
+
+import bathroom2Before from '@assets/images/Bathroom 2/Before/bathroom-2.jpeg';
+import bathroom2After from '@assets/images/Bathroom 2/After/bathroom-2.jpeg';
+
+import bathroom3Before from '@assets/images/Bathroom 1/Before/bathroom-2.jpeg';
+import bathroom3After from '@assets/images/Bathroom 1/After/bathroom-2.jpeg';
+
+const breadcrumbTitles = ["Home", "Services", "Flooring and Tile"];
+const breadcrumbLinks = ["/", "/services", "/flooring-tile"];
+
+const preselected_services = ["flooring-tile"];
+---
+<BreadcrumbPage title="Flooring and Tile Installation in Hamilton, Ontario | Brandan's Contracting">
+	<h1 slot="title" class="px-4 text-4xl lg:text-6xl font-bold uppercase mb-4">Flooring and Tile</h1>
+	<Breadcrumb slot="breadcrumb" titles={breadcrumbTitles} links={breadcrumbLinks}/>
+	<main slot="main">
+		<section id="services" class="py-16 opacity-0" data-animate>
+			<div class="container px-4 mx-auto">
+				<p class="mb-4 max-w-4xl">
+					Upgrade your home or business with professional flooring and tile installation in Hamilton. We work with hardwood, laminate, vinyl, carpet, ceramic, and stone tile to create durable, stylish, and functional spaces. From kitchens and bathrooms to living rooms and basements, we provide flooring solutions that fit your lifestyle and budget.
+				</p>
+				<p class="mb-4 max-w-4xl">
+					Our tile experts also handle backsplashes, showers, and custom patterns with precision and care. Whether it's a full remodel or a simple update, we'll make sure your floors and tile work stand the test of time.				</p>
+				<div class="grid md:grid-cols-2 gap-16">
+					<TransCard before_img={flooringBefore} after_img={flooringAfter} loading="eager"/>
+					<TransCard before_img={bathroomBefore} after_img={bathroomAfter} loading="eager"/>
+					<TransCard before_img={bathroom2Before} after_img={bathroom2After} loading="eager"/>
+					<TransCard before_img={bathroom3Before} after_img={bathroom3After} loading="eager"/>
+				</div>
+			</div>
+		</section>
+		<section id="request-quote" class="py-16 opacity-0" data-animate>
+			<div class="container mx-auto px-4 m-auto">
+					<h2 class="font-bold text-4xl uppercase mb-4 text-center">Request Quote</h2>
+					<p class="text-center mb-4">Fill out some basic information and I will contact you to schedule your free estimate!</p>
+					<QuoteForm selected_services={preselected_services}/>
+			</div>
+		</section>
+	</main>
+</BreadcrumbPage>

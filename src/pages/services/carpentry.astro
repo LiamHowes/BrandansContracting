@@ -1,0 +1,53 @@
+---
+import BreadcrumbPage from '@layouts/BreadcrumbPage.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import QuoteForm from '@components/QuoteForm.astro';
+import TransCard from '@components/TransCard.astro';
+
+/* Before and After Images */
+import fancyDeckBefore from '@assets/images/BIg Fancy Deck/Before/large-deck-before.jpeg';
+import fancyDeckAfter from '@assets/images/BIg Fancy Deck/After/large-deck-after.jpeg';
+
+import deckGazeboBefore from '@assets/images/Deck with Gazebo/before.jpg';
+import deckGazeboAfter from '@assets/images/Deck with Gazebo/after.jpg';
+
+import stairsBefore from '@assets/images/Front Porch Stairs or Steps/Before/stairs-before-2.jpeg';
+import stairsAfter from '@assets/images/Front Porch Stairs or Steps/After/stairs-after-2.jpeg';
+
+import customShelving from '@assets/images/Custom Shelving/custom-built-shelving.jpg';
+
+const breadcrumbTitles = ["Home", "Services", "Carpentry"];
+const breadcrumbLinks = ["/", "/services", "/carpentry"];
+
+const preselected_services = ["carpentry"];
+---
+<BreadcrumbPage title="Carpentry Services in Hamilton, Ontario | Brandan's Contracting">
+	<h1 slot="title" class="px-4 text-4xl lg:text-6xl font-bold uppercase mb-4">Carpentry</h1>
+	<Breadcrumb slot="breadcrumb" titles={breadcrumbTitles} links={breadcrumbLinks}/>
+	<main slot="main">
+		<section id="services" class="py-16 opacity-0" data-animate>
+			<div class="container px-4 mx-auto">
+				<p class="mb-4 max-w-4xl">
+					From custom woodwork to structural improvements, our carpentry services in Hamilton cover a wide range of projects. We build, repair, and install everything from framing and shelving to decks and pergolas. Whether you need functional storage solutions, decorative woodworking, or outdoor living upgrades, we bring precision and craftsmanship to every project.
+				<p>
+				<p class="mb-4 max-w-4xl">
+					We take pride in creating long-lasting, beautiful results that add value and character to your home or business.
+				</p>
+				<div class="grid md:grid-cols-2 gap-16">
+					<TransCard before_img={fancyDeckBefore} after_img={fancyDeckAfter} loading="eager"/>
+					<TransCard before_img={deckGazeboBefore} after_img={deckGazeboAfter} loading="eager"/>
+					<TransCard before_img={stairsBefore} after_img={stairsAfter} loading="eager"/>
+					<Image src={customShelving} alt="custom-built shelving solution" loading="eager" class="max-h-100 w-fit"/>
+				</div>
+			</div>
+		</section>
+		<section id="request-quote" class="py-16 opacity-0" data-animate>
+			<div class="container mx-auto px-4 m-auto">
+					<h2 class="font-bold text-4xl uppercase mb-4 text-center">Request Quote</h2>
+					<p class="text-center mb-4">Fill out some basic information and I will contact you to schedule your free estimate!</p>
+					<QuoteForm selected_services={preselected_services}/>
+			</div>
+		</section>
+	</main>
+</BreadcrumbPage>

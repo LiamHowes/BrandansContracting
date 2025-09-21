@@ -1,0 +1,27 @@
+---
+import { Image } from 'astro:assets';
+import type { ImageMetadata } from "astro";
+
+interface Props {
+    before_img: ImageMetadata;
+    before_alt?: string;
+    after_img: ImageMetadata;
+    after_alt?: string;
+    loading?: "lazy" | "eager";
+    /* after_images: Image[];
+    job_details: string; */
+}
+const { before_img, before_alt = "before", after_img, after_alt="after", loading="lazy"} = Astro.props;
+/* console.log('ServiceCard props:', { img }); */
+
+---
+<div class="grid md:grid-cols-2 border-1 border-charcoal">
+    <div class="overflow-hidden border-b-1 md:border-b-0 md:border-r-1 border-charcoal">
+        <p class="text-center px-4 py-2 uppercase">Before</p>
+        <Image src={before_img} alt={before_alt} loading={loading} class="object-cover h-full max-h-100 w-full object-center"/>
+    </div>
+    <div class="overflow-hidden">
+        <p class="text-center px-4 py-2 uppercase">After</p>
+        <Image src={after_img} alt={after_alt} loading={loading} class="object-cover h-full max-h-100 w-full object-center"/>
+    </div>
+</div>

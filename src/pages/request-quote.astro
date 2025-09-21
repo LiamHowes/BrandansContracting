@@ -1,0 +1,29 @@
+---
+import BreadcrumbPage from '../layouts/BreadcrumbPage.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import aboutHeadshotImage from '../assets/images/Brandan/headshot.jpeg';
+import aboutFamilyImage from '../assets/images/Brandan/family-christmas.jpeg';
+import drywallTrimImage from '../assets/images/stock/drywall-2.jpg';
+import paintingImage from '../assets/images/stock/paint-supplies-1.jpg';
+import flooringTileImage from '../assets/images/stock/tiles.jpg';
+import windowsSidingImage from '../assets/images/stock/windows.jpg';
+import carpentryImage from '../assets/images/stock/carpentry-1.jpg';
+import generalRepairsImage from '../assets/images/stock/tools.jpg';
+
+const breadcrumbTitles = ["Home", "Request Quote"];
+const breadcrumbLinks = ["/", "/request-quote"];
+---
+<BreadcrumbPage title="Request Quote">
+	<h1 slot="title" class="text-center px-4 text-4xl lg:text-6xl font-bold uppercase mb-4">Request Quote</h1>
+	<Breadcrumb slot="breadcrumb" titles={breadcrumbTitles} links={breadcrumbLinks}/>
+	<main slot="main">
+		<section id="request-quote" class="py-16 opacity-0" data-animate>
+			<div class="container mx-auto px-4 m-auto">
+				<p class="text-center mb-4">Fill out some basic information and I will contact you to schedule your free estimate!</p>
+				<QuoteForm />
+			</div>
+		</section>
+	</main>
+</BreadcrumbPage>

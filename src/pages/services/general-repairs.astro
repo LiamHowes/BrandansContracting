@@ -1,0 +1,42 @@
+---
+import BreadcrumbPage from '@layouts/BreadcrumbPage.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import QuoteForm from '@components/QuoteForm.astro';
+import TransCard from '@components/TransCard.astro';
+
+/* Before and After Images */
+import shelvingBefore from '@assets/images/Shelves/Before/shelving-installation-before.jpeg';
+import shelvingAfter from '@assets/images/Shelves/After/shelving-installation-after.jpeg';
+
+import windowWell from '@assets/images/Window Well Cover/new-window-well-cover-corugated-acrylicplastic.jpg';
+
+const breadcrumbTitles = ["Home", "Services", "General Repairs"];
+const breadcrumbLinks = ["/", "/services", "general-repairs"];
+
+const preselected_services = ["general-repairs"];
+---
+<BreadcrumbPage title="Handyman & General Repair Services in Hamilton, Ontario | Brandan's Contracting">
+	<h1 slot="title" class="px-4 text-4xl lg:text-6xl font-bold uppercase mb-4">General Repairs</h1>
+	<Breadcrumb slot="breadcrumb" titles={breadcrumbTitles} links={breadcrumbLinks}/>
+	<main slot="main">
+		<section id="services" class="py-16 opacity-0" data-animate>
+			<div class="container px-4 mx-auto">
+				<p class="mb-4 max-w-4xl">
+					Need something else done? No problem. We also provide a wide variety of general home and commercial repairs in Hamilton. From fixing doors, shelf installation, and more, we take care of the jobs that keep your property safe, functional, and looking its best.
+				<p>
+				<div class="grid md:grid-cols-2 gap-16">
+					<TransCard before_img={shelvingBefore} after_img={shelvingAfter} loading="eager"/>
+					<Image src={windowWell} alt="new window cover made from corugated acrylic" loading="eager" class="max-h-110 w-fit"/>
+				</div>
+			</div>
+		</section>
+		<section id="request-quote" class="py-16 opacity-0" data-animate>
+			<div class="container mx-auto px-4 m-auto">
+					<h2 class="font-bold text-4xl uppercase mb-4 text-center">Request Quote</h2>
+					<p class="text-center mb-4">Fill out some basic information and I will contact you to schedule your free estimate!</p>
+					<QuoteForm selected_services={preselected_services}/>
+			</div>
+		</section>
+	</main>
+</BreadcrumbPage>

@@ -1,0 +1,112 @@
+---
+    /* Request Quote Form */
+interface Props {
+    selected_services?: string[];
+}
+const { selected_services = [] } = Astro.props;
+---
+
+<form class="grid sm:grid-cols-2 gap-4 m-auto max-w-2xl" data-netlify="true" netlify-honeypot="fake-field">
+    <div class="hidden">
+        <input id="fake-field" name="fake-field" type="text"/>
+        <label for="fake-field">Don't fill this field if you're a human. :)</label>
+    </div>
+    <div class="relative mt-6">
+        <input type="text" required id="f-name" name="f-name" placeholder=" " class="bg-white border-1 border-charcoal p-2 w-full" />
+        <label for="f-name" class="absolute top-2 left-0 hover-label px-2 font-medium">First Name</label>
+    </div>
+
+    <div class="relative mt-6">
+        <input type="text" id="l-name" name="l-name" placeholder=" " class="bg-white border-1 border-charcoal p-2 w-full" />
+        <label for="l-name" class="absolute top-2 left-0 hover-label px-2 font-medium">Last Name</label>
+    </div>
+
+    <div class="relative mt-6">
+        <input type="tel" required id="phone" name="phone" placeholder=" " class="bg-white border-1 border-charcoal p-2 w-full" />
+        <label for="phone" class="absolute top-2 left-0 hover-label px-2 font-medium">Phone</label>
+    </div>
+
+    <div class="relative mt-6">
+        <input type="email" id="email" name="email" placeholder=" " class="bg-white border-1 border-charcoal p-2 w-full" />
+        <label for="email" class="absolute top-2 left-0 hover-label px-2 font-medium">Email</label>	
+    </div>
+    <fieldset class="sm:col-span-2">
+        <legend class="font-medium required">Street Address</legend>
+        <div class="grid sm:grid-cols-2 gap-4 w-full">
+            <div class="relative w-full">
+                <input type="text" required id="address-1" name="address-1" placeholder="42 Beaver Street, L0R 0A3" class="bg-white border-1 border-charcoal p-2 w-full" />
+            </div>
+
+            <div class="relative w-full">
+                <input type="text" id="address-2" name="address-2" placeholder="Apartment., suite, unit, floor, etc." class="bg-white border-1 border-charcoal p-2 w-full" />
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="relative sm:col-span-2 w-full">
+        <fieldset>
+            <legend class="font-medium mb-2">What services are you looking for? (select all that apply)</legend>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-4 mt-2">
+                <div class="flex gap-1">
+                    { selected_services.includes('drywall-trim') ? 
+                        <input type="checkbox" id="drywall-trim" name="drywall-trim" value="drywall/trim" class="h-5 w-5" checked /> 
+                        :
+                        <input type="checkbox" id="drywall-trim" name="drywall-trim" value="drywall/trim" class="h-5 w-5" />
+                    }
+                    <label for="drywall-trim">Drywall and Trim</label>
+                </div>
+                <div class="flex gap-1">
+                    { selected_services.includes('paint') ? 
+                        <input type="checkbox" id="paint" name="paint" value="painting" class="h-5 w-5" checked />
+                        :
+                        <input type="checkbox" id="paint" name="paint" value="painting" class="h-5 w-5" />
+                    }
+                    <label for="paint">Painting</label>
+                </div>
+                <div class="flex gap-1">
+                    { selected_services.includes('flooring-tile') ? 
+                        <input type="checkbox" id="flooring-tile" name="flooring-tile" value="flooring/tile" class="h-5 w-5" checked />
+                        :
+                        <input type="checkbox" id="flooring-tile" name="flooring-tile" value="flooring/tile" class="h-5 w-5" />
+                    }
+                    <label for="flooring-tile">Flooring and Tile</label>
+                </div>
+                <div class="flex gap-1">
+                    { selected_services.includes('windows-siding') ? 
+                        <input type="checkbox" id="windows-siding" name="windows-siding" value="windows/siding" class="h-5 w-5" checked />
+                        :
+                        <input type="checkbox" id="windows-siding" name="windows-siding" value="windows/siding" class="h-5 w-5" />
+                    }
+                    <label for="windows-siding">Windows and Siding</label>
+                </div>
+                <div class="flex gap-1">
+                    { selected_services.includes('carpentry') ? 
+                        <input type="checkbox" id="carpentry" name="carpentry" value="carpentry" class="h-5 w-5" checked />
+                        :
+                        <input type="checkbox" id="carpentry" name="carpentry" value="carpentry" class="h-5 w-5" />
+                    }
+                    <label for="carpentry">Carpentry</label>
+                </div>
+                <div class="flex gap-1">
+                    { selected_services.includes('general-repairs') ? 
+                        <input type="checkbox" id="general-repairs" name="general-repairs" value="general repairs" class="h-5 w-5" checked /> 
+                        :
+                        <input type="checkbox" id="general-repairs" name="general-repairs" value="general repairs" class="h-5 w-5" />
+                    }
+                    <label for="general-repairs">General Repairs</label>
+                </div>
+                <div class="flex gap-1">
+                    <input type="checkbox" id="other" name="other" value="other" class="h-5 w-5" />
+                    <label for="other">Other</label>
+                </div>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="relative sm:col-span-2">
+        <label for="details" class="font-medium">Job Details</label>	
+        <textarea id="details" name="details" placeholder="Please provide any additional information such as your timeline, budget, project scope and size, etc." class="bg-white border-1 border-charcoal p-2 w-full"></textarea>
+    </div>
+
+    <input type="submit" value="Send Quote Request" class="btn-primary sm:col-span-2">
+</form>

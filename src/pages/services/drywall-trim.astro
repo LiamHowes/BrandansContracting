@@ -1,0 +1,46 @@
+---
+import BreadcrumbPage from '@layouts/BreadcrumbPage.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import QuoteForm from '@components/QuoteForm.astro';
+import TransCard from '@components/TransCard.astro';
+
+/* Before and After Images */
+import stairsDrywallBefore from '@assets/images/Stairs Drywall/before/drywall.jpeg';
+import stairsDrywallAfter from '@assets/images/Stairs Drywall/after/drywall.jpeg';
+
+import closetDrywallBefore from '@assets/images/Closet Drywall/before/closet-drywall.jpeg';
+import closetDrywallAfter from '@assets/images/Closet Drywall/after/closet-drywall.jpeg';
+
+const breadcrumbTitles = ["Home", "Services", "Drywall and Trim"];
+const breadcrumbLinks = ["/", "/services", "/drywall-trim"];
+
+const preselected_services = ["drywall-trim"];
+---
+<BreadcrumbPage title="Drywall Installation, Repair & Trim Work in Hamilton, Ontario | Brandan's Contracting">
+	<h1 slot="title" class="px-4 text-4xl lg:text-6xl font-bold uppercase mb-4">Drywall and Trim</h1>
+	<Breadcrumb slot="breadcrumb" titles={breadcrumbTitles} links={breadcrumbLinks}/>
+	<main slot="main">
+		<section id="services" class="py-16 opacity-0" data-animate>
+			<div class="container px-4 mx-auto">
+				<p class="mb-4 max-w-4xl">
+					At Brandan's Contracting, we provide expert drywall installation, repair, and finishing services in Hamilton and the surrounding area. Whether you're renovating a single room or finishing a full basement, we deliver smooth, seamless walls that are ready for paint. We also specialize in interior trim, including baseboards, crown molding, and casings, to give your space a polished and professional look.
+				<p>
+				<p class="mb-4 max-w-4xl">
+					From small drywall patches to full-scale installations, our attention to detail ensures your home or business looks its best.
+				</p>
+				<div class="grid md:grid-cols-2 gap-16">
+					<TransCard before_img={stairsDrywallBefore} after_img={stairsDrywallAfter} loading="eager"/>
+					<TransCard before_img={closetDrywallBefore} after_img={closetDrywallAfter} loading="eager"/>
+				</div>
+			</div>
+		</section>
+		<section id="request-quote" class="py-16 opacity-0" data-animate>
+			<div class="container mx-auto px-4 m-auto">
+					<h2 class="font-bold text-4xl uppercase mb-4 text-center">Request Quote</h2>
+					<p class="text-center mb-4">Fill out some basic information and I will contact you to schedule your free estimate!</p>
+					<QuoteForm selected_services={preselected_services}/>
+			</div>
+		</section>
+	</main>
+</BreadcrumbPage>

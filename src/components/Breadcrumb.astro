@@ -1,0 +1,34 @@
+---
+interface Props {
+    titles: string[];
+    links: string[];
+}
+const { titles = ["Home", ""], links = ["/"] } = Astro.props;
+import { Image } from 'astro:assets';
+/* console.log('ServiceCard props:', { img }); */
+
+---
+<section id="breadcrumb" class="py-4">
+    <div class="container px-4 mx-auto">
+        <nav aria-label="Breadcrumb" class="container">
+            <ol class="flex flex-wrap">
+                {titles.map((title, index) => (
+                    <li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+                        {
+                            index < titles.length - 1 ? (
+                                <a itemprop="item" href={links[index]}><span itemprop="name">{title}</span></a>
+                                <meta itemprop="position" content={(index + 1).toString()} />
+                            )
+                            : /* else */
+                            (
+                                <span itemprop="name">{title}</span>
+                                <meta itemprop="position" content={(index + 1).toString()} />
+                            )
+                        }
+                        
+                    </li>
+                ))}
+            </ol>
+        </nav>
+    </div>
+</section>

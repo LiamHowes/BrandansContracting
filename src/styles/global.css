@@ -1,0 +1,104 @@
+@import "tailwindcss";
+.chalk{
+    color:var(--chalk);
+}
+.charcoal{
+    color:var(--charcoal);
+}
+.fs-32{
+    font-size:32px;
+}
+.fs-64{
+    font-size:64px;
+}
+.fs-128{
+    font-size:128px;
+}
+html{
+    --blueprint-blue: #08355E;
+    --carpenter-orange: #FFC770;
+    --chalk: #FFFCFA;
+    --charcoal: #222222;
+    --grey-bg: #E7E7E7;
+}
+html, body{
+    background-color:var(--chalk);
+    color:var(--charcoal);
+    margin:0 0 0 0;
+    font-size:18px;
+    font-family: 'Noto Sans', arial, sans-serif
+}
+.outline-charcoal{
+    outline-color: var(--charcoal);
+}
+.border-charcoal{
+    border-color:var(--charcoal);
+}
+.bg-charcoal{
+    background-color:var(--charcoal);
+}
+.bg-chalk{
+    background-color:var(--chalk);
+}
+.btn-primary{
+    background-color:var(--carpenter-orange);
+    text-transform:uppercase;
+    padding:0.25em 0.5em;
+    font-weight:bold;
+}
+input:required + label::after, .required::after{
+    content:'*';
+    color:red;
+    margin-left:0.125em;
+}
+input[type="submit"], button, .btn-primary{
+    /* border:2px solid transparent; */
+}
+input[type="submit"]:hover, button:hover, .btn-primary:hover{
+    opacity:0.8;
+    cursor:pointer;
+    /* border:2px solid var(--charcoal); */
+}
+label.hover-label{
+    pointer-events:none;
+}
+
+input:focus + label.hover-label, textarea:focus + label.hover-label,
+input:not(:placeholder-shown) + label.hover-label, textarea:not(:placeholder-shown) + label.hover-label{	
+    top:-1.5em;
+    left:0em;
+    padding:0em;
+}
+input[type="checkbox"]{
+    accent-color:var(--carpenter-orange)
+}
+
+#breadcrumb li:not(:last-child):after{
+    content: "/";
+    margin:0em 1em;
+}
+a:hover{
+    text-decoration: underline;
+}
+#breadcrumb a{
+    text-decoration:underline;
+}
+
+.see-work{
+    background-color:var(--carpenter-orange);
+}
+
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    } 
+    100%{
+        opacity: 1;
+        transform: translateY(0);
+    } 
+}
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out forwards;
+}

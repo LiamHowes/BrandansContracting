@@ -1,0 +1,36 @@
+---
+interface Props {
+    num_stars: number;
+    quote: string;
+    name: string;
+    date: string;
+}
+
+const { num_stars, quote, name, date } = Astro.props;
+import { Image } from 'astro:assets';
+import starImage from '@assets/images/star.svg';
+/* console.log('ServiceCard props:', { img }); */
+
+---
+<style>
+.quote-box .quote:before{
+    content:'"';
+    position:absolute;
+    top:-2em;
+    left:-1em;
+}
+</style>
+<div class="quote-box min-w-[min(80vw,600px)] max-w-3xl">
+    <div class="flex gap-2 justify-center m-auto"> 
+        {Array.from({ length: num_stars }).map((_, index) => (
+            <Image src={starImage} alt="star" width="32" height="32"/>
+        ))}
+    </div>
+    <p class="quote text-justify">
+        {quote}
+    </p>
+    <div class="text-right flex flex-wrap gap-4 justify-end">
+        <span class="font-bold">{name}</span>
+        <span class="font-light text-gray-700">{date}</span>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+---
+import BreadcrumbPage from '@layouts/BreadcrumbPage.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+import QuoteForm from '@components/QuoteForm.astro';
+import TransCard from '@components/TransCard.astro';
+
+/* Before and After Images */
+import bedroomPaintBefore from '@assets/images/Bedroom Paint/before/bedroom-paint-before.jpg';
+import bedroomPaintAfter from '@assets/images/Bedroom Paint/after/bedroom-paint-after.jpg';
+
+import bedroomPaint2Before from '@assets/images/Bedroom Paint/before/bedroom-paint-before-2.jpg';
+import bedroomPaint2After from '@assets/images/Bedroom Paint/after/bedroom-paint-after-2.jpg';
+
+import kitchenCabinetsBefore from '@assets/images/Kitchen Cabinets Paint/before/kitchen-cabinets-before-paint.jpeg';
+import kitchenCabinetsAfter from '@assets/images/Kitchen Cabinets Paint/after/kitchen-cabinets-after-paint.jpeg';
+
+
+const breadcrumbTitles = ["Home", "Services", "Painting"];
+const breadcrumbLinks = ["/", "/services", "/drywall-trim"];
+
+const preselected_services = ["paint"];
+---
+<BreadcrumbPage title="Interior & Exterior Painting Services in Hamilton, Ontario | Brandan's Contracting">
+	<h1 slot="title" class="px-4 text-4xl lg:text-6xl font-bold uppercase mb-4">Painting</h1>
+	<Breadcrumb slot="breadcrumb" titles={breadcrumbTitles} links={breadcrumbLinks}/>
+	<main slot="main">
+		<section id="services" class="py-16 opacity-0" data-animate>
+			<div class="container px-4 mx-auto">
+				<p class="mb-4 max-w-4xl">
+					Transform your space with professional painting services in Hamilton. We handle both interior and exterior painting projects, using high-quality paints and precise techniques to achieve a clean, durable finish. Whether you're refreshing a single room, updating your home's curb appeal, or completing a full renovation, our painting team delivers flawless results.
+				<p>
+				<p class="mb-4 max-w-4xl">
+					We prep surfaces properly, repair imperfections, and apply smooth coats for long-lasting beauty. Let us bring your vision to life with the perfect colours and finishes.
+				</p>
+				<div class="grid md:grid-cols-2 gap-16">
+					<TransCard before_img={bedroomPaintBefore} after_img={bedroomPaintAfter} loading="eager"/>
+					<TransCard before_img={bedroomPaint2Before} after_img={bedroomPaint2After} loading="eager"/>
+					<TransCard before_img={kitchenCabinetsBefore} after_img={kitchenCabinetsAfter} loading="eager"/>
+				</div>
+			</div>
+		</section>
+		<section id="request-quote" class="py-16 opacity-0" data-animate>
+			<div class="container mx-auto px-4 m-auto">
+					<h2 class="font-bold text-4xl uppercase mb-4 text-center">Request Quote</h2>
+					<p class="text-center mb-4">Fill out some basic information and I will contact you to schedule your free estimate!</p>
+					<QuoteForm selected_services={preselected_services}/>
+			</div>
+		</section>
+	</main>
+</BreadcrumbPage>
