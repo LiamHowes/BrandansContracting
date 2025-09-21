@@ -1,0 +1,19 @@
+---
+import BreadcrumbPage from '@layouts/BreadcrumbPage.astro';
+import Breadcrumb from '@components/Breadcrumb.astro';
+import { Image } from 'astro:assets';
+
+const breadcrumbTitles = ["Home", "Request Quote", "Success"];
+const breadcrumbLinks = ["/", "/request-quote", "success"];
+
+const preselected_services = ["general-repairs"];
+---
+<BreadcrumbPage title="Request Quote Success | Brandan's Contracting">
+	<h1 slot="title" class="px-4 text-4xl lg:text-6xl font-bold uppercase mb-4">Thank You For Your Request!</h1>
+	<Breadcrumb slot="breadcrumb" titles={breadcrumbTitles} links={breadcrumbLinks}/>
+	<main slot="main">
+        <div class="container px-4 mx-auto">
+            <p>I will contact you soon to schedule your free estimate.</p>
+        </div>
+	</main>
+</BreadcrumbPage>

@@ -6,7 +6,7 @@ interface Props {
 const { selected_services = [] } = Astro.props;
 ---
 
-<form class="grid sm:grid-cols-2 gap-4 m-auto max-w-2xl" data-netlify="true" netlify-honeypot="fake-field">
+<form class="grid sm:grid-cols-2 gap-4 m-auto max-w-2xl" data-netlify="true" netlify-honeypot="fake-field" name="feedback" method="POST" action="/request-quote/success">
     <div class="hidden">
         <input id="fake-field" name="fake-field" type="text"/>
         <label for="fake-field">Don't fill this field if you're a human. :)</label>
